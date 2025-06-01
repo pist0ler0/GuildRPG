@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab5Library
+namespace GuildRPG.Models
 {
     public class Monster
     {

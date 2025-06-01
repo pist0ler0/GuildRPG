@@ -1,7 +1,15 @@
+using GuildRPG.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using GuildRPG.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<GuildRPGContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("GuildRPGContext") ?? throw new InvalidOperationException("Connection string 'GuildRPGContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<Guild>();
 
 var app = builder.Build();
 

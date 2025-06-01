@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GuildRPG.Exceptions;
 using GuildRPG.Models;
 
 namespace GuildRPG.Services

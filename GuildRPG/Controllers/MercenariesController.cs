@@ -1,0 +1,157 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using GuildRPG.Data;
+using GuildRPG.Models;
+
+namespace GuildRPG.Controllers
+{
+    public class MercenariesController : Controller
+    {
+        private readonly GuildRPGContext _context;
+
+        public MercenariesController(GuildRPGContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Mercenaries
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Mercenary.ToListAsync());
+        }
+
+        // GET: Mercenaries/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mercenary = await _context.Mercenary
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (mercenary == null)
+            {
+                return NotFound();
+            }
+
+            return View(mercenary);
+        }
+
+        // GET: Mercenaries/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Mercenaries/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Name,Level,ExperiencePoints,MaxHealth,CurrentHealth,Damage,Gold")] Mercenary mercenary)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(mercenary);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(mercenary);
+        }
+
+        // GET: Mercenaries/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mercenary = await _context.Mercenary.FindAsync(id);
+            if (mercenary == null)
+            {
+                return NotFound();
+            }
+            return View(mercenary);
+        }
+
+        // POST: Mercenaries/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Level,ExperiencePoints,MaxHealth,CurrentHealth,Damage,Gold")] Mercenary mercenary)
+        {
+            if (id != mercenary.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(mercenary);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MercenaryExists(mercenary.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(mercenary);
+        }
+
+        // GET: Mercenaries/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mercenary = await _context.Mercenary
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (mercenary == null)
+            {
+                return NotFound();
+            }
+
+            return View(mercenary);
+        }
+
+        // POST: Mercenaries/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var mercenary = await _context.Mercenary.FindAsync(id);
+            if (mercenary != null)
+            {
+                _context.Mercenary.Remove(mercenary);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool MercenaryExists(int id)
+        {
+            return _context.Mercenary.Any(e => e.Id == id);
+        }
+    }
+}

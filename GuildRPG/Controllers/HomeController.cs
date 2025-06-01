@@ -23,6 +23,11 @@ namespace GuildRPG.Controllers
             return View();
         }
 
+        public IActionResult Play()
+        {
+            return RedirectToAction("Index", "Guild");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

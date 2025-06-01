@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GuildRPG
 build_property.RootNamespace = GuildRPG
@@ -18,12 +26,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\GitRepos\GuildRPG\GuildRPG
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/GitRepos/GuildRPG/GuildRPG/Views/Guild/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VpbGRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/GitRepos/GuildRPG/GuildRPG/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/GitRepos/GuildRPG/GuildRPG/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitRepos/GuildRPG/GuildRPG/Views/Mercenaries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2VuYXJpZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitRepos/GuildRPG/GuildRPG/Views/Mercenaries/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2VuYXJpZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitRepos/GuildRPG/GuildRPG/Views/Mercenaries/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2VuYXJpZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitRepos/GuildRPG/GuildRPG/Views/Mercenaries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2VuYXJpZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitRepos/GuildRPG/GuildRPG/Views/Mercenaries/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVyY2VuYXJpZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/GitRepos/GuildRPG/GuildRPG/Views/Shared/Error.cshtml]
