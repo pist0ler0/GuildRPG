@@ -1,13 +1,10 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model List<Mercenary>;
-
+@model List<Mercenary>
 @{
-    ViewData["Title"] = "Gildia";
 }
-<h1>Gildia</h1>
-<a asp-action="HireMercenaryList" class="btn btn-primary">Dodaj do gildii</a>
+<h1>Wolni Najemnicy</h1>
 <table class="table">
     <thead>
         <tr>
@@ -61,11 +58,12 @@
                     @Html.DisplayFor(modelItem => item.Gold)
                 </td>
                 <td>
-                    <a asp-action="Details" asp-controller="Mercenaries" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete From Guild</a>
+                   <form asp-action="HireMercenary" asp-route-id="@item.Id" method="post">
+                        <button type="submit" class="btn btn-primary">Dodaj do gildii</button>
+                   </form>
+      
                 </td>
             </tr>
         }
     </tbody>
 </table>
-

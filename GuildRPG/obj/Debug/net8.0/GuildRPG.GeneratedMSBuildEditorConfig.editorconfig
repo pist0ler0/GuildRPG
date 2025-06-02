@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\GitRepos\GuildRPG\GuildRPG
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/GitRepos/GuildRPG/GuildRPG/Views/Guild/HireMercenaryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VpbGRcSGlyZU1lcmNlbmFyeUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/GitRepos/GuildRPG/GuildRPG/Views/Guild/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VpbGRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
