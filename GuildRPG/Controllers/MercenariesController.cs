@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuildRPG.Data;
 using GuildRPG.Models;
+using GuildRPG.ViewModels;
 
 namespace GuildRPG.Controllers
 {
@@ -20,9 +21,20 @@ namespace GuildRPG.Controllers
         }
 
         // GET: Mercenaries
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 5)
         {
-            return View(await _context.Mercenary.ToListAsync());
+            var totalMercenaries = await _context.Mercenary.CountAsync();
+            var mercenaries = await _context.Mercenary
+                .Skip((pageNumber - 1) * pageSize) 
+                .Take(pageSize) 
+                .ToListAsync();
+            var vm = new MercPageViewModel
+            {
+                Mercenaries = mercenaries,
+                PageNumber = pageNumber,
+                TotalPages = (int)Math.Ceiling((double)totalMercenaries/pageSize)
+            };
+            return View(vm);
         }
 
         // GET: Mercenaries/Details/5

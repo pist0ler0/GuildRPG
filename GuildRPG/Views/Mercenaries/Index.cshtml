@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GuildRPG.Models.Mercenary>
+﻿@model GuildRPG.ViewModels.MercPageViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -13,31 +13,31 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Mercenaries.First().Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Level)
+                @Html.DisplayNameFor(model => model.Mercenaries.First().Level)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ExperiencePoints)
+                @Html.DisplayNameFor(model => model.Mercenaries.First().ExperiencePoints)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaxHealth)
+                @Html.DisplayNameFor(model => model.Mercenaries.First().MaxHealth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CurrentHealth)
+                @Html.DisplayNameFor(model => model.Mercenaries.First().CurrentHealth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Damage)
+                @Html.DisplayNameFor(model => model.Mercenaries.First().Damage)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gold)
+                @Html.DisplayNameFor(model => model.Mercenaries.First().Gold)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Mercenaries) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -69,3 +69,14 @@
 }
     </tbody>
 </table>
+@if (Model.HasPreviousPage)
+{
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageNumber - 1)" class="btn btn-primary">Poprzednia</a>
+}
+
+<span>Strona @Model.PageNumber z @Model.TotalPages</span>
+
+@if (Model.HasNextPage)
+{
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageNumber + 1)" class="btn btn-primary">Następna</a>
+}

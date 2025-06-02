@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GuildRPG.Data;
 using GuildRPG.Exceptions;
 using GuildRPG.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuildRPG.Services
 {
     public class GuildService
     {
+        private readonly IServiceScopeFactory _scopeFactory;
         private List<Mercenary> mercenaries;
 
         public List<Mercenary> Mercenaries
@@ -25,10 +28,11 @@ namespace GuildRPG.Services
             get { return quests; }
             set { quests = value; }
         }
-        public GuildService()
+        public GuildService(IServiceScopeFactory scopeFactory)
         {
             mercenaries = new List<Mercenary>();
             quests = new List<Quest>();
+            _scopeFactory = scopeFactory;
         }
 
         public void addMercenary(Mercenary mercenary)
@@ -67,25 +71,39 @@ namespace GuildRPG.Services
         public event doSomethingWithMercenaryAndQuest OnQuestCompleted;
         public void sendMercenaryToQuest(string mercenaryName, string questName)
         {
-            Mercenary m = mercenaries.Find(x => x.Name.Equals(mercenaryName));
-            Quest q = quests.Find(x => x.Name.Equals(questName));
             
-            if (m != null && q != null)
+            using (var scope = _scopeFactory.CreateScope())
             {
-                OnQuestCompleting?.Invoke(m, q);
-                while (m.CurrentHealth > 0 && q.Enemy.Health > 0)
+                var _context = scope.ServiceProvider.GetRequiredService<GuildRPGContext>();
+                var m = _context.Mercenary.FirstOrDefault(x => x.Name.Equals(mercenaryName));
+                var q = quests.Find(x => x.Name.Equals(questName));
+                if (m != null && q != null)
                 {
-                    q.Enemy.Health -= m.Damage;
-                    if (q.Enemy.Health > 0) m.CurrentHealth -= q.Enemy.Damage;
+                    OnQuestCompleting?.Invoke(m, q);
+                    while (m.CurrentHealth > 0 && q.Enemy.Health > 0)
+                    {
+                        q.Enemy.Health -= m.Damage;
+                        if (q.Enemy.Health > 0) m.CurrentHealth -= q.Enemy.Damage;
+                        Console.WriteLine("Nowe HP: " + m.CurrentHealth);
+                    }
+                    OnQuestCompleted?.Invoke(m, q);
+                    Console.WriteLine($"Zmiany do zapisu {_context.ChangeTracker.HasChanges()}");
+                    _context.Mercenary.Attach(m);
+                    _context.Mercenary.Update(m);
+                    
+                    _context.SaveChanges();
 
                 }
-                OnQuestCompleted?.Invoke(m, q);
-
-            } else {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.White;
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
+                
+            
+            
             
 
         }

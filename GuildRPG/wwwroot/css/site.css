@@ -8,9 +8,7 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
+
 
 html {
   position: relative;
@@ -18,5 +16,99 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #3E2723; /* Ciemny, drewniany br¹z */
+    color: #E0C9A6; /* Kolor pergaminu */
+    font-family: 'Cinzel', serif; /* Elegancka czcionka stylizowana na œredniowieczn¹ */
+    margin: 0;
+    margin-bottom: 100px;
+    padding: 0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    background: #5D4037; /* Drewniany panel */
+    border: 5px solid #8D6E63; /* Stara ramka */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Efekt starego pergaminu */
+}
+
+h1, h2, h3 {
+    color: #D7CCC8; /* Jasny be¿, jak wygrawerowany tekst */
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid #8D6E63; /* Stare drewno */
+    padding-bottom: 10px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #795548; /* Klasyczny, ciemny br¹z */
+    color: white;
+}
+
+th, td {
+    padding: 14px;
+    border: 2px solid #5D4037; /* G³êbokie drewno */
+    font-family: 'Cinzel', serif;
+}
+
+th {
+    background-color: #4E342E; /* Drewniany akcent */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Cinzel', serif;
+}
+
+.btn-primary {
+    background: linear-gradient(#6D4C41, #4E342E); /* Skórzany efekt */
+    color: white;
+    border: 2px solid #8D6E63; /* Miedziane wykoñczenie */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(#5D4037, #3E2723);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); /* Z³oty blask */
+}
+
+.btn-danger {
+    background-color: #BF360C; /* Czerwieñ wojownika */
+    color: white;
+    border: 2px solid #8D0808; /* Krwawe zdobienia */
+}
+
+.btn-danger:hover {
+    background-color: #8D0808;
+}
+
+.navbar {
+    background: linear-gradient(#5D4037, #4E342E); /* Drewniane belki */
+    padding: 12px;
+    text-align: center;
+    border-bottom: 4px solid #8D6E63; /* Miedziane wykoñczenie */
+}
+
+.navbar a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    font-family: 'Cinzel', serif;
+}
+
+.navbar a:hover {
+    background-color: #4E342E; /* Efekt starego drewna */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Œwiecznikowy blask */
 }

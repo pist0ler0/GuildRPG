@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model GuildRPG.ViewModels.MercQuestViewModel
+@{
+}
+<h2>Wyślij Najemnika na Wyprawę</h2>
+
+<form asp-action="SendMercToQuest" method="post">
+    <div class="form-group">
+        <label for="MercName">Najemnik</label>
+        <select asp-for="MercName" class="form-control">
+            @foreach (var merc in Model.Mercenaries)
+            {
+                <option value="@merc.Name">@merc.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="QuestName">Wyprawa</label>
+        <select asp-for="QuestName" class="form-control">
+            @foreach (var quest in Model.Quests)
+            {
+                <option value="@quest.Name">@quest.Name</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Wyślij!</button>
+</form>
+

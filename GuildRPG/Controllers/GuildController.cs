@@ -1,7 +1,9 @@
 ﻿using GuildRPG.Data;
 using GuildRPG.Models;
 using GuildRPG.Services;
+using GuildRPG.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuildRPG.Controllers
 {
@@ -44,6 +46,28 @@ namespace GuildRPG.Controllers
                 guild.Mercenaries.Remove(mercenary);
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult SelectMercAndQuest()
+        {
+            var mercAndQuestVM = new MercQuestViewModel
+            {
+                Mercenaries = _context.Mercenary
+                .Where(m => guild.Mercenaries.Contains(m))
+                .ToList(),
+                Quests = _context.Quest.ToList()
+            };
+           
+            return View(mercAndQuestVM);
+        }
+
+        public async Task<IActionResult> SendMercToQuest(MercQuestViewModel vm)
+        {
+            guild.sendMercenaryToQuest(vm.MercName, vm.QuestName);
+            var mercenary = await _context.Mercenary.FirstOrDefaultAsync(m => m.Name == vm.MercName);
+            _context.Mercenary.Update(mercenary);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }
