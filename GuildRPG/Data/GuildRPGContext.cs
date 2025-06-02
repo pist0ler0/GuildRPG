@@ -15,5 +15,7 @@ namespace GuildRPG.Data
         }
 
         public DbSet<GuildRPG.Models.Mercenary> Mercenary { get; set; } = default!;
+        public DbSet<GuildRPG.Models.Monster> Monster { get; set; } = default!;
+        public DbSet<GuildRPG.Models.Quest> Quest { get; set; } = default!;
     }
 }

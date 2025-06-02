@@ -1,4 +1,5 @@
-﻿using GuildRPG.Models;
+﻿using GuildRPG.Data;
+using GuildRPG.Models;
 using GuildRPG.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +7,18 @@ namespace GuildRPG.Controllers
 {
     public class GuildController : Controller
     {
-        private readonly Guild guild;
+        private readonly GuildService guild;
+        private readonly GuildRPGContext _context;
 
-        public GuildController(Guild guild)
+        public GuildController(GuildService guild)
         {
             this.guild = guild;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var guildMercenaries = guild.Mercenaries;
+            return View(guildMercenaries);
         }
         public IActionResult HireMercenary(Mercenary merc)
         {

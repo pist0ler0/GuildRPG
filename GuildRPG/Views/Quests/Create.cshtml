@@ -1,0 +1,63 @@
+﻿@model GuildRPG.Models.Quest
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Quest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diff" class="control-label"></label>
+                <select asp-for="Diff" class="form-control" asp-items="Html.GetEnumSelectList<GuildRPG.Models.Difficulty>()"></select>
+                <span asp-validation-for="Diff" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnemyId" class="control-label"></label>
+                <select asp-for="EnemyId" class="form-control" asp-items="@(ViewData["EnemyId"] as SelectList)"></select>
+                <span asp-validation-for="EnemyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RewardXP" class="control-label"></label>
+                <input asp-for="RewardXP" class="form-control" />
+                <span asp-validation-for="RewardXP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RewardMoney" class="control-label"></label>
+                <input asp-for="RewardMoney" class="form-control" />
+                <span asp-validation-for="RewardMoney" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

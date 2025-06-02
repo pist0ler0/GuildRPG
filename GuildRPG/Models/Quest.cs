@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,14 @@ namespace GuildRPG.Models
 {
     public class Quest
     {
+		private int id;
+
+		public int Id
+		{
+			get { return id; }
+			set { id = value; }
+		}
+
 
 		private string name;
 
@@ -41,8 +51,18 @@ namespace GuildRPG.Models
 			set { diff = value; }
 		}
 
+		private int enemyId;
+
+		public int EnemyId
+		{
+			get { return enemyId; }
+			set { enemyId = value; }
+		}
+
+
 		private Monster enemy;
 
+		[ValidateNever]
 		public Monster Enemy
 		{
 			get { return enemy; }
@@ -75,6 +95,10 @@ namespace GuildRPG.Models
             this.enemy = enemy;
 			this.rewardXP = xpR;
 			this.rewardMoney = moneyR;
+        }
+
+        public Quest()
+        {
         }
     }
 }

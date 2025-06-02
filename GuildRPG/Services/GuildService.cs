@@ -8,7 +8,7 @@ using GuildRPG.Models;
 
 namespace GuildRPG.Services
 {
-    public class Guild
+    public class GuildService
     {
         private List<Mercenary> mercenaries;
 
@@ -25,7 +25,7 @@ namespace GuildRPG.Services
             get { return quests; }
             set { quests = value; }
         }
-        public Guild()
+        public GuildService()
         {
             mercenaries = new List<Mercenary>();
             quests = new List<Quest>();

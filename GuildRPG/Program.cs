@@ -9,7 +9,7 @@ builder.Services.AddDbContext<GuildRPGContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<Guild>();
+builder.Services.AddSingleton<GuildService>();
 
 var app = builder.Build();
 
