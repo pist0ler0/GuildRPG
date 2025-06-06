@@ -46,6 +46,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RewardMoney)
         </dd>
+        <dt class="col-sm-2">
+           @Html.DisplayNameFor(model => model.Enemy.Name)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-action="Details" asp-controller="Monsters" asp-route-id="@Model.Enemy.Id">@Html.DisplayFor(model => model.Enemy.Name)</a>
+        </dd>
     </dl>
 </div>
 <div>

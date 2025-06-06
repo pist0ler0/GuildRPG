@@ -34,6 +34,7 @@ namespace GuildRPG.Controllers
             }
 
             var quest = await _context.Quest
+                .Include(q => q.Enemy)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (quest == null)
             {

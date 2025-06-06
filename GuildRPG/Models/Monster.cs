@@ -32,6 +32,15 @@ namespace GuildRPG.Models
 			set { health = value; }
 		}
 
+		private byte[] imageData;
+
+		public byte[] ImageData
+		{
+			get { return imageData; }
+			set { imageData = value; }
+		}
+
+
 		private double damage;
 
 		public double Damage

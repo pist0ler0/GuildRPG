@@ -54,9 +54,15 @@ namespace GuildRPG.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Health,Damage")] Monster monster)
+        public async Task<IActionResult> Create([Bind("Id,Name,Health,Damage")] Monster monster, IFormFile? imageFile)
         {
-            if (ModelState.IsValid)
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                using var ms = new MemoryStream();
+                await imageFile.CopyToAsync(ms);
+                monster.ImageData = ms.ToArray();
+            }
+                if (ModelState.IsValid)
             {
                 _context.Add(monster);
                 await _context.SaveChangesAsync();
@@ -86,11 +92,17 @@ namespace GuildRPG.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Health,Damage")] Monster monster)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Health,Damage")] Monster monster, IFormFile? imageFile)
         {
             if (id != monster.Id)
             {
                 return NotFound();
+            }
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                using var ms = new MemoryStream();
+                await imageFile.CopyToAsync(ms);
+                monster.ImageData = ms.ToArray();
             }
 
             if (ModelState.IsValid)

@@ -76,7 +76,8 @@ namespace GuildRPG.Services
             {
                 var _context = scope.ServiceProvider.GetRequiredService<GuildRPGContext>();
                 var m = _context.Mercenary.FirstOrDefault(x => x.Name.Equals(mercenaryName));
-                var q = quests.Find(x => x.Name.Equals(questName));
+                var q = quests
+                    .Find(x => x.Name.Equals(questName));
                 if (m != null && q != null)
                 {
                     OnQuestCompleting?.Invoke(m, q);
