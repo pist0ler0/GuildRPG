@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -29,9 +29,17 @@
                 <span asp-validation-for="Damage" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label for="imageFile">Zdjęcie potwora</label>
+                <input type="file" name="imageFile" id="imageFile" class="form-control" />
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
+        @if (Model.ImageData != null)
+        {
+            <img src="@Url.Action("GetImage", "Monsters", new { id = Model.Id })" height="300", width="300"/>
+        }
     </div>
 </div>
 

@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\GuildRPG.bundle.scp.css"
     },
     {
+      "Id": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\pochodnia.png",
+      "PackagePath": "staticwebassets\\Images\\pochodnia.png"
+    },
+    {
+      "Id": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\scroll.png",
+      "PackagePath": "staticwebassets\\Images\\scroll.png"
+    },
+    {
+      "Id": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\tablica.png",
+      "PackagePath": "staticwebassets\\Images\\tablica.png"
+    },
+    {
       "Id": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

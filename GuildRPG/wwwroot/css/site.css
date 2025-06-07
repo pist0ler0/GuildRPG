@@ -38,7 +38,6 @@ h1, h2, h3 {
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
-    border-bottom: 3px solid #8D6E63; /* Stare drewno */
     padding-bottom: 10px;
 }
 
@@ -111,4 +110,36 @@ th {
 .navbar a:hover {
     background-color: #4E342E; /* Efekt starego drewna */
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Œwiecznikowy blask */
+}
+.torch-left {
+    float: left;
+    width: 150px;
+    height: 150px;
+}
+.torch-right{
+    float:right;
+    width:150px;
+    height:150px;
+}
+.tablica {
+    background-image: url("../Images/tablica.png");
+    background-size: cover; /* Dopasuj, nie zniekszta³caj */
+    background-repeat: no-repeat; /* Nie powtarzaj */
+    background-position: center;
+    height: 130px;
+    width: 200px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+}
+
+    .tablica h1 {
+        font-family: "Old English", serif;
+        color: #2d1b0f
+    }
+.tablica-container {
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }

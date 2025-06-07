@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GuildRPG")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35a7d63c8f69ed7010311d39980c95129d8926ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d57a3f139c209da7effbef69cad8c44dbcde20e")]
 [assembly: System.Reflection.AssemblyProductAttribute("GuildRPG")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GuildRPG")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

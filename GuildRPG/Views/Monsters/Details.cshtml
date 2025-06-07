@@ -28,6 +28,17 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Damage)
         </dd>
+        <p>Rozmiar zdjęcia: @(Model.ImageData?.Length ?? 0) bajtów</p>
+        @if (Model.ImageData != null)
+        {
+            <div>
+                <img src="@Url.Action("GetImage", "Monsters", new { id = Model.Id })" alt="Zdjęcie potwora" style="width: 300px; height: auto;" />
+            </div>
+        }
+        else
+        {
+            <p><em>Brak zdjęcia</em></p>
+        }
     </dl>
 </div>
 <div>

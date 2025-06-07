@@ -61,8 +61,9 @@ namespace GuildRPG.Controllers
                 using var ms = new MemoryStream();
                 await imageFile.CopyToAsync(ms);
                 monster.ImageData = ms.ToArray();
+                monster.ImageType = imageFile.ContentType;
             }
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Add(monster);
                 await _context.SaveChangesAsync();
@@ -94,6 +95,7 @@ namespace GuildRPG.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Health,Damage")] Monster monster, IFormFile? imageFile)
         {
+            Console.WriteLine($"Plik: {imageFile?.FileName}, Rozmiar: {imageFile?.Length}");
             if (id != monster.Id)
             {
                 return NotFound();
@@ -103,6 +105,7 @@ namespace GuildRPG.Controllers
                 using var ms = new MemoryStream();
                 await imageFile.CopyToAsync(ms);
                 monster.ImageData = ms.ToArray();
+                monster.ImageType = imageFile.ContentType;
             }
 
             if (ModelState.IsValid)
@@ -164,6 +167,14 @@ namespace GuildRPG.Controllers
         private bool MonsterExists(int id)
         {
             return _context.Monster.Any(e => e.Id == id);
+        }
+        public IActionResult GetImage(int id)
+        {
+            var monster = _context.Monster.FirstOrDefault(m => m.Id == id);
+            if (monster?.ImageData == null || monster.ImageType == null)
+                return NotFound();
+
+            return File(monster.ImageData, monster.ImageType);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,14 +32,23 @@ namespace GuildRPG.Models
 			get { return health; }
 			set { health = value; }
 		}
-
+		
 		private byte[] imageData;
-
-		public byte[] ImageData
+        
+        public byte[]? ImageData
 		{
 			get { return imageData; }
 			set { imageData = value; }
 		}
+
+		private string imageType;
+        
+        public string? ImageType
+		{
+			get { return imageType; }
+			set { imageType = value; }
+		}
+
 
 
 		private double damage;
