@@ -4,7 +4,11 @@
     ViewData["Title"] = "Najemnicy";
 }
 
-<h1>Najemnicy</h1>
+<div class="tablica-container">
+    <div class="tablica">
+        <h1>Najemnicy</h1>
+    </div>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -16,7 +20,11 @@
                 @Html.DisplayNameFor(model => model.Mercenaries.First().Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mercenaries.First().Level)
+                <a asp-action="Index"
+                   asp-route-sortOrder="@(Model.CurrentSort == "Level" ? "level_desc" : "Level")"
+                   asp-route-pageNumber="@Model.PageNumber">
+                    @Html.DisplayNameFor(model => model.Mercenaries.First().Level)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Mercenaries.First().ExperiencePoints)
@@ -71,7 +79,7 @@
 </table>
 @if (Model.HasPreviousPage)
 {
-    <a asp-action="Index" asp-route-pageNumber="@(Model.PageNumber - 1)" class="btn btn-primary">Poprzednia</a>
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-sortOrder="@Model.CurrentSort" class="btn btn-primary">Poprzednia</a>
 }
 
 <span>Strona @Model.PageNumber z @Model.TotalPages</span>

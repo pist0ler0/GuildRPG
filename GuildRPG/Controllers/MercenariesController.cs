@@ -21,22 +21,44 @@ namespace GuildRPG.Controllers
         }
 
         // GET: Mercenaries
-        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 5)
+        public async Task<IActionResult> Index(string sortOrder, int pageNumber = 1, int pageSize = 5)
         {
-            var totalMercenaries = await _context.Mercenary.CountAsync();
-            var mercenaries = await _context.Mercenary
-                .Skip((pageNumber - 1) * pageSize) 
-                .Take(pageSize) 
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["LevelSortParm"] = sortOrder == "Level" ? "level_desc" : "Level";
+
+            var query = _context.Mercenary.AsQueryable();
+
+            // Sortowanie
+            switch (sortOrder)
+            {
+                case "Level":
+                    query = query.OrderBy(m => m.Level);
+                    break;
+                case "level_desc":
+                    query = query.OrderByDescending(m => m.Level);
+                    break;
+                default:
+                    query = query.OrderBy(m => m.Id);
+                    break;
+            }
+
+            var totalMercenaries = await query.CountAsync();
+
+            var mercenaries = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
             var vm = new MercPageViewModel
             {
                 Mercenaries = mercenaries,
                 PageNumber = pageNumber,
-                TotalPages = (int)Math.Ceiling((double)totalMercenaries/pageSize)
+                TotalPages = (int)Math.Ceiling((double)totalMercenaries / pageSize),
+                CurrentSort = sortOrder // Dodaj do ViewModelu
             };
+
             return View(vm);
         }
-
         // GET: Mercenaries/Details/5
         public async Task<IActionResult> Details(int? id)
         {

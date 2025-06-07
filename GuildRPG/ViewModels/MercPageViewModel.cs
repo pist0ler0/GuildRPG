@@ -10,6 +10,6 @@ namespace GuildRPG.ViewModels
         public int TotalPages { get; set; }
         public bool HasPreviousPage => PageNumber > 1;
         public bool HasNextPage => PageNumber < TotalPages;
- 
+        public string? CurrentSort { get; set; }
     }
 }
