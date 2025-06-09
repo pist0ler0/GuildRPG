@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <img src="Images/pochodnia.png" class="torch-left" />
+                <img src="~/Images/pochodnia.png" asp-append-version="true" class="torch-left" />
                 <div class="tablica-container">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GuildRPG</a>
                 </div>
@@ -20,7 +20,8 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <img src="Images/pochodnia.png" class="torch-right" />
+                <partial name="_LoginPartial"/>
+                <img src="~/Images/pochodnia.png" asp-append-version="true" class="torch-right" />
             </div>
         </nav>
     </header>

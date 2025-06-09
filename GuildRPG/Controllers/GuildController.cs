@@ -20,7 +20,9 @@ namespace GuildRPG.Controllers
 
         public IActionResult Index()
         {
-            var guildMercenaries = guild.Mercenaries;
+            var guildMercenaries = _context.Mercenary
+            .Where(m => guild.Mercenaries.Select(x => x.Id).Contains(m.Id))
+            .ToList();
             return View(guildMercenaries);
         }
         public IActionResult HireMercenary(Mercenary merc)
@@ -53,7 +55,7 @@ namespace GuildRPG.Controllers
             var mercAndQuestVM = new MercQuestViewModel
             {
                 Mercenaries = _context.Mercenary
-                .Where(m => guild.Mercenaries.Contains(m))
+                .Where(m => guild.Mercenaries.Contains(m) && m.CurrentHealth > 0)
                 .ToList(),
                 Quests = _context.Quest.ToList()
             };
@@ -61,12 +63,9 @@ namespace GuildRPG.Controllers
             return View(mercAndQuestVM);
         }
 
-        public async Task<IActionResult> SendMercToQuest(MercQuestViewModel vm)
+        public IActionResult SendMercToQuest(MercQuestViewModel vm)
         {
             guild.sendMercenaryToQuest(vm.MercName, vm.QuestName);
-            var mercenary = await _context.Mercenary.FirstOrDefaultAsync(m => m.Name == vm.MercName);
-            _context.Mercenary.Update(mercenary);
-            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
     }

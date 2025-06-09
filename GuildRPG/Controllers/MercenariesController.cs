@@ -187,5 +187,13 @@ namespace GuildRPG.Controllers
         {
             return _context.Mercenary.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> HealMerc(int id)
+        {
+            var merc = await _context.Mercenary.FindAsync(id);
+            merc.CurrentHealth = merc.MaxHealth;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

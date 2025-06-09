@@ -76,8 +76,9 @@ namespace GuildRPG.Services
             {
                 var _context = scope.ServiceProvider.GetRequiredService<GuildRPGContext>();
                 var m = _context.Mercenary.FirstOrDefault(x => x.Name.Equals(mercenaryName));
-                var q = quests
-                    .Find(x => x.Name.Equals(questName));
+                var q = _context.Quest
+                    .Include(q => q.Enemy)
+                    .FirstOrDefault(q => q.Name == questName);
                 if (m != null && q != null)
                 {
                     OnQuestCompleting?.Invoke(m, q);
@@ -89,10 +90,14 @@ namespace GuildRPG.Services
                     }
                     OnQuestCompleted?.Invoke(m, q);
                     Console.WriteLine($"Zmiany do zapisu {_context.ChangeTracker.HasChanges()}");
-                    _context.Mercenary.Attach(m);
-                    _context.Mercenary.Update(m);
-                    
+                    _context.Entry(m).State = EntityState.Modified;
                     _context.SaveChanges();
+                    var updated = _context.Mercenary.FirstOrDefault(x => x.Name == m.Name);
+                    var idx = mercenaries.FindIndex(x => x.Id == updated.Id);
+                    if (idx != -1)
+                    {
+                        mercenaries[idx] = updated;
+                    }
 
                 }
                 else
@@ -102,11 +107,6 @@ namespace GuildRPG.Services
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-                
-            
-            
-            
-
         }
         
 

@@ -62,8 +62,8 @@ namespace GuildRPG.Models
 
 		private Monster enemy;
 
-		[ValidateNever]
-		public Monster Enemy
+        [ForeignKey("EnemyId")]
+        public Monster Enemy
 		{
 			get { return enemy; }
 			set { enemy = value; }
