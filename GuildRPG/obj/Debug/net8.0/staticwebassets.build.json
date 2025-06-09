@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xTMRkQMthh/fuKoF+qbyuNFnZq7w1S2TybA0Zornz/U=",
+  "Hash": "TYyLH1xWW9CzbLc5qGNri0UUrId2YnP9D702JPzj7IY=",
   "Source": "GuildRPG",
   "BasePath": "_content/GuildRPG",
   "Mode": "Default",
@@ -1233,6 +1233,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\LoseSword.png",
+      "SourceId": "GuildRPG",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\",
+      "BasePath": "_content/GuildRPG",
+      "RelativePath": "Images/LoseSword.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\LoseSword.png"
+    },
+    {
       "Identity": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\pochodnia.png",
       "SourceId": "GuildRPG",
       "SourceType": "Discovered",
@@ -1288,6 +1307,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\tablica.png"
+    },
+    {
+      "Identity": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\WinSword.png",
+      "SourceId": "GuildRPG",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\",
+      "BasePath": "_content/GuildRPG",
+      "RelativePath": "Images/WinSword.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\WinSword.png"
     },
     {
       "Identity": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\js\\site.js",

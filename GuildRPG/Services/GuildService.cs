@@ -79,6 +79,7 @@ namespace GuildRPG.Services
                 var q = _context.Quest
                     .Include(q => q.Enemy)
                     .FirstOrDefault(q => q.Name == questName);
+                var eMaxHealth = q.Enemy.Health;
                 if (m != null && q != null)
                 {
                     OnQuestCompleting?.Invoke(m, q);
@@ -91,6 +92,7 @@ namespace GuildRPG.Services
                     OnQuestCompleted?.Invoke(m, q);
                     Console.WriteLine($"Zmiany do zapisu {_context.ChangeTracker.HasChanges()}");
                     _context.Entry(m).State = EntityState.Modified;
+                    q.Enemy.Health = eMaxHealth;
                     _context.SaveChanges();
                     var updated = _context.Mercenary.FirstOrDefault(x => x.Name == m.Name);
                     var idx = mercenaries.FindIndex(x => x.Id == updated.Id);

@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\GuildRPG.bundle.scp.css"
     },
     {
+      "Id": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\LoseSword.png",
+      "PackagePath": "staticwebassets\\Images\\LoseSword.png"
+    },
+    {
+      "Id": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\WinSword.png",
+      "PackagePath": "staticwebassets\\Images\\WinSword.png"
+    },
+    {
       "Id": "D:\\GitRepos\\GuildRPG\\GuildRPG\\wwwroot\\Images\\pochodnia.png",
       "PackagePath": "staticwebassets\\Images\\pochodnia.png"
     },

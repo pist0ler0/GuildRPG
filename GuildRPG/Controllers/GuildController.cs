@@ -66,7 +66,22 @@ namespace GuildRPG.Controllers
         public IActionResult SendMercToQuest(MercQuestViewModel vm)
         {
             guild.sendMercenaryToQuest(vm.MercName, vm.QuestName);
-            return RedirectToAction("Index");
+           var merc = _context.Mercenary.FirstOrDefault(x => x.Name.Equals(vm.MercName));
+            if (merc.CurrentHealth <= 0)
+            {
+                return RedirectToAction("Lose");
+            }
+            else
+            {
+                return RedirectToAction("Win");
+            }
         }
+
+        public IActionResult Win()
+        {
+            return View();
+        }
+
+        public IActionResult Lose() { return View(); }
     }
 }
